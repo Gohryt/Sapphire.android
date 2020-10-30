@@ -1,0 +1,2 @@
+include 'app', 'libgo'
+rootProject.name = "Sapphire"
