@@ -14,10 +14,4 @@
         <item name="android:navigationBarColor">@color/backgroundMainNight</item>
         <item name="android:windowLightNavigationBar">false</item>
     </style>
-
-    <style name="Sapphire.LogoName">
-        <item name="android:textColor">@color/itemColorMain</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textFontWeight">900</item>
-    </style>
 </resources>

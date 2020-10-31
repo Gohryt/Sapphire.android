@@ -8,16 +8,10 @@
     </style>
 
     <style name="Sapphire.Launcher" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/backgroundMainNight</item>
+        <item name="android:statusBarColor">@color/backgroundMain</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:navigationBarColor">@color/backgroundMainNight</item>
+        <item name="android:navigationBarColor">@color/backgroundMain</item>
         <item name="android:windowLightNavigationBar">true</item>
-    </style>
-
-    <style name="Sapphire.LogoName">
-        <item name="android:textColor">@color/itemColorMain</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textFontWeight">900</item>
     </style>
 </resources>
