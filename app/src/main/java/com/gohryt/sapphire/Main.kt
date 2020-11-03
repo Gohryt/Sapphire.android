@@ -2,14 +2,21 @@ package com.gohryt.sapphire
 
 import android.os.Bundle
 import android.provider.Settings.Secure
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.main.*
 import libgo.Libgo
+import libgo.PropertiesStruct
+import libgo.SessionStruct
 import java.util.*
 
 class Main : AppCompatActivity() {
-    private var session: Boolean = false
-    private var properties: Boolean = false
+    private lateinit var session: SessionStruct
+    private lateinit var properties: PropertiesStruct
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.main)
+        splash.visibility = View.VISIBLE
         Libgo.setProjectVariables(
             applicationInfo.packageName,
             applicationInfo.dataDir,
@@ -24,8 +31,6 @@ class Main : AppCompatActivity() {
         )
         session = Libgo.checkSession()
         properties = Libgo.checkProperties()
-        setTheme(R.style.Sapphire)
-        setContentView(R.layout.main)
-        super.onCreate(savedInstanceState)
+        splash.visibility = View.GONE
     }
 }
