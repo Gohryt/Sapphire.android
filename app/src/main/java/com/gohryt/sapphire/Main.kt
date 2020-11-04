@@ -5,21 +5,18 @@ import android.provider.Settings.Secure
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main.*
-import libgo.Libgo
-import libgo.VariablesStruct
-import libgo.PropertiesStruct
-import libgo.SessionStruct
+import libgo.*
 import java.util.*
 
 class Main : AppCompatActivity() {
-    private lateinit var projectVariables: VariablesStruct
+    private lateinit var variables: VariablesStruct
     private lateinit var session: SessionStruct
     private lateinit var properties: PropertiesStruct
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
         splash.visibility = View.VISIBLE
-        projectVariables = Libgo.setVariables(
+        variables = Libgo.setVariables(
             applicationInfo.packageName,
             applicationInfo.dataDir,
             android.os.Build.VERSION.RELEASE,
@@ -34,5 +31,9 @@ class Main : AppCompatActivity() {
         session = Libgo.setSession()
         properties = Libgo.setProperties()
         splash.visibility = View.GONE
+        button.setOnClickListener {
+            Libgo.auth(editTextPhone.text.toString(), editTextTextPassword.text.toString())
+            textView.text = session.accessToken
+        }
     }
 }
