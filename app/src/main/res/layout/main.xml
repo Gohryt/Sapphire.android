@@ -5,43 +5,6 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/splash"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="gone"
-        app:constraint_referenced_ids="splash_logo,splash_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/splash_logo"
-        android:layout_width="96sp"
-        android:layout_height="96sp"
-        android:contentDescription="@string/name"
-        android:padding="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/splash_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/splash_logo" />
-
-    <TextView
-        android:id="@+id/splash_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/name"
-        android:theme="@style/Sapphire.SplashName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/splash_logo" />
-
-    <androidx.constraintlayout.widget.Group
         android:id="@+id/logIn"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -83,7 +46,6 @@
         android:id="@+id/logIn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="auth"
         android:text="@string/logIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

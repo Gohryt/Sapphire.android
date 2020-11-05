@@ -6,7 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main.*
-import libgo.*
+import libgo.Libgo
+import libgo.PropertiesStruct
+import libgo.SessionStruct
+import libgo.VariablesStruct
 import java.util.*
 
 class Main : AppCompatActivity() {
@@ -14,9 +17,9 @@ class Main : AppCompatActivity() {
     private lateinit var session: SessionStruct
     private lateinit var properties: PropertiesStruct
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Sapphire)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-        splash.visibility = View.VISIBLE
         variables = Libgo.setVariables(
             applicationInfo.packageName,
             applicationInfo.dataDir,
@@ -31,24 +34,40 @@ class Main : AppCompatActivity() {
         )
         session = Libgo.setSession()
         properties = Libgo.setProperties()
-        splash.visibility = View.GONE
-        logIn.visibility = View.VISIBLE
-    }
-    fun auth(view: View) {
-        val auth = Libgo.auth(logIn_username.text.toString(), logIn_password.text.toString())
-        when {
-            auth.error == "invalid_client" && auth.errorType == "username_or_password_is_incorrect" -> {
-                Toast.makeText(applicationContext, R.string.logInErrorIncorrect, Toast.LENGTH_SHORT).show()
+        if (session.accessToken != "" && session.userID != "" && session.webviewRefreshToken != "" && session.webviewAccessToken != "" && session.webviewAcessTokenExpiresIn != "") {
+
+        } else {
+            logIn_submit.setOnClickListener {
+                val auth =
+                    Libgo.auth(logIn_username.text.toString(), logIn_password.text.toString())
+                when {
+                    auth.error == "invalid_client" && auth.errorType == "username_or_password_is_incorrect" -> {
+                        Toast.makeText(
+                            applicationContext,
+                            R.string.logInErrorIncorrect,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    auth.error == "need_validation" && auth.validationSid != "" && auth.redirectURI != "" -> {
+                        Toast.makeText(
+                            applicationContext,
+                            R.string.logInError2fa,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    session.accessToken != "" && session.userID != "" && session.webviewRefreshToken != "" && session.webviewAccessToken != "" && session.webviewAcessTokenExpiresIn != "" -> {
+                        logIn.visibility = View.GONE
+                    }
+                    else -> {
+                        Toast.makeText(
+                            applicationContext,
+                            R.string.logInErrorUnknown,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
-            auth.error == "need_validation" &&  auth.validationSid != "" && auth.redirectURI != "" -> {
-                Toast.makeText(applicationContext, R.string.logInError2fa, Toast.LENGTH_SHORT).show()
-            }
-            auth.error != "" -> {
-                Toast.makeText(applicationContext, R.string.logInErrorUnknown, Toast.LENGTH_SHORT).show()
-            }
-            else -> {
-                Toast.makeText(applicationContext, auth.toString(), Toast.LENGTH_SHORT).show()
-            }
+            logIn.visibility = View.VISIBLE
         }
     }
 }
