@@ -6,16 +6,20 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/splash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:visibility="gone"
-        app:constraint_referenced_ids="splash_logo,splash_name" />
+        app:constraint_referenced_ids="splash_logo,splash_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/splash_logo"
         android:layout_width="96sp"
         android:layout_height="96sp"
-        android:contentDescription="@string/project_name"
+        android:contentDescription="@string/name"
         android:padding="4dp"
         app:layout_constraintBottom_toTopOf="@+id/splash_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,54 +34,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="@string/project_name"
+        android:text="@string/name"
         android:theme="@style/Sapphire.SplashName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/splash_logo" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/logIn"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="logIn_username,logIn_password,logIn_submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/logIn_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        android:inputType="text"
+        android:hint="@string/logInHintUsername"
+        app:layout_constraintBottom_toTopOf="@+id/logIn_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        android:autofillHints="username" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/logIn_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:hint="@string/logInHintPassword"
+        app:layout_constraintBottom_toTopOf="@+id/logIn_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/logIn_username"
+        android:autofillHints="password" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logIn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:onClick="auth"
+        android:text="@string/logIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/logIn_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

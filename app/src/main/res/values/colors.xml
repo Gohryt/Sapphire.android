@@ -2,8 +2,7 @@
 <resources>
     <color name="iconBackground">#ffffff</color>
     <color name="iconAccent">#007FFF</color>
-    <color name="backgroundMain">#ffffff</color>
-    <color name="backgroundBackground">#ecf2f9</color>
-    <color name="colorMain">#808080</color>
-    <color name="colorAccent">#007FFF</color>
+    <color name="background">#ffffff</color>
+    <color name="text">#808080</color>
+    <color name="textAccent">#007FFF</color>
 </resources>

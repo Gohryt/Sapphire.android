@@ -3,6 +3,7 @@ package com.gohryt.sapphire
 import android.os.Bundle
 import android.provider.Settings.Secure
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main.*
 import libgo.*
@@ -31,9 +32,23 @@ class Main : AppCompatActivity() {
         session = Libgo.setSession()
         properties = Libgo.setProperties()
         splash.visibility = View.GONE
-        button.setOnClickListener {
-            Libgo.auth(editTextPhone.text.toString(), editTextTextPassword.text.toString())
-            textView.text = session.accessToken
+        logIn.visibility = View.VISIBLE
+    }
+    fun auth(view: View) {
+        val auth = Libgo.auth(logIn_username.text.toString(), logIn_password.text.toString())
+        when {
+            auth.error == "invalid_client" && auth.errorType == "username_or_password_is_incorrect" -> {
+                Toast.makeText(applicationContext, R.string.logInErrorIncorrect, Toast.LENGTH_SHORT).show()
+            }
+            auth.error == "need_validation" &&  auth.validationSid != "" && auth.redirectURI != "" -> {
+                Toast.makeText(applicationContext, R.string.logInError2fa, Toast.LENGTH_SHORT).show()
+            }
+            auth.error != "" -> {
+                Toast.makeText(applicationContext, R.string.logInErrorUnknown, Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                Toast.makeText(applicationContext, auth.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

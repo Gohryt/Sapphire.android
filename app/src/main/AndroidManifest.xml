@@ -8,7 +8,7 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/icon"
-        android:label="@string/project_name"
+        android:label="@string/name"
         android:roundIcon="@mipmap/icon_round"
         android:theme="@style/Sapphire"
         android:supportsRtl="true">

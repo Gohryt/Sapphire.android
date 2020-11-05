@@ -1,3 +1,10 @@
 <resources>
-    <string name="project_name">Sapphire</string>
+    <string name="name">Sapphire</string>
+    <string name="logIn">Log in</string>
+    <string name="logInErrorIncorrect">You entered an invalid username or password</string>
+    <string name="logInConfirm">Confirm</string>
+    <string name="logInErrorUnknown">An unknown error occurred</string>
+    <string name="logInHintUsername">Phone or email</string>
+    <string name="logInHintPassword">Password</string>
+    <string name="logInError2fa">2fa is not supported</string>
 </resources>
