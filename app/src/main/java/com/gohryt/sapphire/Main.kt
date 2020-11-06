@@ -2,10 +2,9 @@ package com.gohryt.sapphire
 
 import android.os.Bundle
 import android.provider.Settings.Secure
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.main.*
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import libgo.Libgo
 import libgo.PropertiesStruct
 import libgo.SessionStruct
@@ -13,9 +12,12 @@ import libgo.VariablesStruct
 import java.util.*
 
 class Main : AppCompatActivity() {
-    private lateinit var variables: VariablesStruct
-    private lateinit var session: SessionStruct
-    private lateinit var properties: PropertiesStruct
+    companion object {
+        lateinit var variables: VariablesStruct
+        lateinit var session: SessionStruct
+        lateinit var properties: PropertiesStruct
+        lateinit var navController: NavController
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Sapphire)
         super.onCreate(savedInstanceState)
@@ -34,40 +36,10 @@ class Main : AppCompatActivity() {
         )
         session = Libgo.setSession()
         properties = Libgo.setProperties()
-        if (session.accessToken != "" && session.userID != "" && session.webviewRefreshToken != "" && session.webviewAccessToken != "" && session.webviewAcessTokenExpiresIn != "") {
-
-        } else {
-            logIn_submit.setOnClickListener {
-                val auth =
-                    Libgo.auth(logIn_username.text.toString(), logIn_password.text.toString())
-                when {
-                    auth.error == "invalid_client" && auth.errorType == "username_or_password_is_incorrect" -> {
-                        Toast.makeText(
-                            applicationContext,
-                            R.string.logInErrorIncorrect,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    auth.error == "need_validation" && auth.validationSid != "" && auth.redirectURI != "" -> {
-                        Toast.makeText(
-                            applicationContext,
-                            R.string.logInError2fa,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    session.accessToken != "" && session.userID != "" && session.webviewRefreshToken != "" && session.webviewAccessToken != "" && session.webviewAcessTokenExpiresIn != "" -> {
-                        logIn.visibility = View.GONE
-                    }
-                    else -> {
-                        Toast.makeText(
-                            applicationContext,
-                            R.string.logInErrorUnknown,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-            logIn.visibility = View.VISIBLE
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        navController = navHostFragment.navController
+        if (session.accessToken == "" || session.userID == "" || session.webviewRefreshToken == "" || session.webviewAccessToken == "" || session.webviewAcessTokenExpiresIn == "") {
+            navController.navigate(R.id.fragmentAuth)
         }
     }
 }

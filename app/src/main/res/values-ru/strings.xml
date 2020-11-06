@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="name">Sapphire</string>
-    <string name="logIn">Войти</string>
-    <string name="logInErrorIncorrect">Вы ввели неверный логин или пароль</string>
-    <string name="logInConfirm">Подтвердить</string>
-    <string name="logInErrorUnknown">Произошла неизвестная ошибка</string>
-    <string name="logInHintUsername">Телефон или эл. почта</string>
-    <string name="logInHintPassword">Пароль</string>
-    <string name="logInError2fa">Двухфакторная аутентификация не поддерживается</string>
+    <string name="authHintUsername">Телефон или эл. почта</string>
+    <string name="authHintPassword">Пароль</string>
+    <string name="authLogin">Войти</string>
+    <string name="authErrorIncorrect">Вы ввели неверный логин или пароль</string>
+    <string name="authError2fa">Двухфакторная аутентификация не поддерживается</string>
+    <string name="authErrorUnknown">Произошла неизвестная ошибка</string>
 </resources>

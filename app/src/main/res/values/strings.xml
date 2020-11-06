@@ -1,10 +1,11 @@
 <resources>
     <string name="name">Sapphire</string>
-    <string name="logIn">Log in</string>
-    <string name="logInErrorIncorrect">You entered an invalid username or password</string>
-    <string name="logInConfirm">Confirm</string>
-    <string name="logInErrorUnknown">An unknown error occurred</string>
-    <string name="logInHintUsername">Phone or email</string>
-    <string name="logInHintPassword">Password</string>
-    <string name="logInError2fa">2fa is not supported</string>
+    <string name="authHintUsername">Phone or email</string>
+    <string name="authHintPassword">Password</string>
+    <string name="authLogin">Log in</string>
+    <string name="authErrorIncorrect">You entered an invalid username or password</string>
+    <string name="authError2fa">2fa is not supported</string>
+    <string name="authErrorUnknown">An unknown error occurred</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
