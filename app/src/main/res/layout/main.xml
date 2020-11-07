@@ -7,10 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navGraph="@navigation/main_graph" />
+        app:navGraph="@navigation/map" >
+    </fragment>
 </FrameLayout>

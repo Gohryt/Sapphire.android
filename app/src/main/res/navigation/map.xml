@@ -9,7 +9,15 @@
         android:id="@+id/fragmentAuth"
         android:name="com.gohryt.sapphire.FragmentAuth"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_fragmentAuth_to_fragmentUserprofile"
+            app:destination="@id/fragmentUserprofile"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentUserprofile"
         android:name="com.gohryt.sapphire.FragmentUserprofile"
@@ -17,6 +25,10 @@
         tools:layout="@layout/fragment_userprofile" >
         <action
             android:id="@+id/action_fragmentUserprofile_to_fragmentAuth"
-            app:destination="@id/fragmentAuth" />
+            app:destination="@id/fragmentAuth"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 </navigation>

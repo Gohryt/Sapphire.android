@@ -10,10 +10,13 @@
         android:icon="@mipmap/icon"
         android:label="@string/name"
         android:roundIcon="@mipmap/icon_round"
+        android:theme="@style/Sapphire"
         android:supportsRtl="true">
         <activity
             android:name=".Main"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/Sapphire.Splash"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

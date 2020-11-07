@@ -35,7 +35,7 @@ class FragmentAuth : Fragment() {
                 }
                 Main.session.accessToken != "" && Main.session.userID != "" && Main.session.webviewRefreshToken != "" && Main.session.webviewAccessToken != "" && Main.session.webviewAcessTokenExpiresIn != "" -> {
                     realView.auth_base.visibility = View.GONE
-                    Main.navController.navigate(R.id.fragmentUserprofile)
+                    Main.navController.navigate(R.id.action_fragmentAuth_to_fragmentUserprofile)
                 }
                 else -> {
                     Toast.makeText(

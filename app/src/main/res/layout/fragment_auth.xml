@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textEmailAddress|text"
         android:hint="@string/authHintUsername"
         app:layout_constraintBottom_toTopOf="@+id/auth_password"
         app:layout_constraintEnd_toEndOf="parent"
