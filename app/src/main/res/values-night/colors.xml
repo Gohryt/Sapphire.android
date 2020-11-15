@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="iconBackground">#ffffff</color>
     <color name="iconAccent">#007FFF</color>
-    <color name="background">#060d13</color>
-    <color name="text">#808080</color>
-    <color name="textAccent">#007FFF</color>
+    <color name="iconBackground">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="text">#FFFFFFFF</color>
+    <color name="accent">#FF007FFF</color>
+    <color name="backgroundMain">#FF262626</color>
+    <color name="backgroundPoor">#FF141414</color>
 </resources>

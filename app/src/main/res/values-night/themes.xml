@@ -1,12 +1,10 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="Sapphire" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/background</item>
+<resources>
+
+    <style name="Theme.Sapphire" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/backgroundPoor</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowBackground">@color/background</item>
-        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowBackground">@color/backgroundPoor</item>
+        <item name="android:navigationBarColor">@color/backgroundPoor</item>
         <item name="android:windowLightNavigationBar">false</item>
-    </style>
-    <style name="Sapphire.Splash" parent="Sapphire">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 </resources>
