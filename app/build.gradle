@@ -8,7 +8,7 @@ android {
     buildToolsVersion '30.0.2'
     defaultConfig {
         applicationId "gohryt.sapphire"
-        minSdkVersion 27
+        minSdkVersion 24
         targetSdkVersion 30
         versionName "2020.11.12.1"
         multiDexEnabled false
@@ -37,14 +37,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
-        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
+        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion kotlinVersion
-        kotlinCompilerExtensionVersion composeVersion
+        kotlinCompilerVersion '1.4.10'
+        kotlinCompilerExtensionVersion '1.0.0-alpha07'
     }
     dependenciesInfo {
         includeInApk false
@@ -52,11 +52,13 @@ android {
     }
 }
 dependencies {
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
-    implementation 'androidx.core:core-ktx:1.5.0-alpha04'
+    implementation fileTree(include: 'libgo.aar', dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.10"
+    implementation 'androidx.core:core-ktx:1.5.0-alpha05'
     implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
-    implementation "androidx.compose.compiler:compiler:$composeVersion"
-    implementation "androidx.compose.foundation:foundation:$composeVersion"
-    implementation "androidx.compose.ui:ui:$composeVersion"
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha02"
+    implementation "androidx.compose.compiler:compiler:1.0.0-alpha07"
+    implementation "androidx.compose.foundation:foundation:1.0.0-alpha07"
+    implementation "androidx.compose.material:material:1.0.0-alpha07"
+    implementation "androidx.compose.ui:ui:1.0.0-alpha07"
 }

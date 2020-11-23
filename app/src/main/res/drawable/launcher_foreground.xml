@@ -3,15 +3,20 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <group
-        android:scaleX="0.09023438"
-        android:scaleY="0.09023438"
-        android:translateX="30.9"
-        android:translateY="30.9">
-        <path
-            android:fillColor="#007fff"
-            android:fillType="evenOdd"
-            android:pathData="M75,104H19c-16,0 -19,8 -19,16 0,15 19,88 88,186 47,66 112,102 171,102 36,0 40,-8 40,-22v-50c0,-16 4,-19 15,-19 8,0 22,4 56,36 38,38 44,55 65,55h56c16,0 24,-8 20,-24 -5,-16 -23,-38 -48,-65 -13,-16 -32,-32 -38,-41 -8,-10 -6,-15 0,-25 0,0 68,-96 75,-128 4,-12 0,-21 -17,-21h-56c-14,0 -21,8 -24,16 0,0 -29,69 -69,114 -13,13 -19,18 -26,18 -4,0 -9,-5 -9,-16V125c0,-15 -4,-21 -16,-21h-88c-9,0 -14,7 -14,13 0,13 20,16 22,54v83c0,18 -3,21 -10,21 -19,0 -65,-69 -93,-149 -5,-16 -10,-22 -25,-22z"
-            android:strokeLineJoin="round" />
-    </group>
+  <group android:scaleX="1.1478261"
+      android:scaleY="1.1478261"
+      android:translateX="-7.982609"
+      android:translateY="-7.982609">
+      <group
+          android:scaleX="0.09023438"
+          android:scaleY="0.09023438"
+          android:translateX="30.9"
+          android:translateY="30.9">
+          <path
+              android:fillColor="#007fff"
+              android:fillType="evenOdd"
+              android:pathData="M75,104H19c-16,0 -19,8 -19,16 0,15 19,88 88,186 47,66 112,102 171,102 36,0 40,-8 40,-22v-50c0,-16 4,-19 15,-19 8,0 22,4 56,36 38,38 44,55 65,55h56c16,0 24,-8 20,-24 -5,-16 -23,-38 -48,-65 -13,-16 -32,-32 -38,-41 -8,-10 -6,-15 0,-25 0,0 68,-96 75,-128 4,-12 0,-21 -17,-21h-56c-14,0 -21,8 -24,16 0,0 -29,69 -69,114 -13,13 -19,18 -26,18 -4,0 -9,-5 -9,-16V125c0,-15 -4,-21 -16,-21h-88c-9,0 -14,7 -14,13 0,13 20,16 22,54v83c0,18 -3,21 -10,21 -19,0 -65,-69 -93,-149 -5,-16 -10,-22 -25,-22z"
+              android:strokeLineJoin="round" />
+      </group>
+  </group>
 </vector>

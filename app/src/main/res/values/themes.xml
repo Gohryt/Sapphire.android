@@ -1,10 +1,13 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.Sapphire" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/backgroundPoor</item>
-        <item name="android:windowLightStatusBar">true</item>
+    <style name="Theme.Sapphire" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:statusBarColor" tools:targetApi="23">@color/backgroundPoor</item>
+        <item name="android:navigationBarColor" tools:targetApi="27">@color/backgroundPoor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowBackground">@color/backgroundPoor</item>
-        <item name="android:navigationBarColor">@color/backgroundPoor</item>
-        <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>

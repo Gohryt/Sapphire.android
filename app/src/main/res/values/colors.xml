@@ -2,6 +2,7 @@
 <resources>
     <color name="iconAccent">#FF007FFF</color>
     <color name="iconBackground">#FFFFFFFF</color>
+    <color name="navigationBarLegacy">#FF000000</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="text">#FF595959</color>
     <color name="accent">#FF007FFF</color>
