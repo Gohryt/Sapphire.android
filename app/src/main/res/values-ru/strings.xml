@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sapphire</string>
+    <string name="login_enter">Войти</string>
+    <string name="login_username">Телефон или электронная почта</string>
+</resources>

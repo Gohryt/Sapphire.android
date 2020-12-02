@@ -2,167 +2,53 @@ package gohryt.sapphire.models
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.layout.ExperimentalLayout
+import androidx.compose.foundation.layout.InternalLayoutApi
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.unit.dp
+import gohryt.sapphire.elements.Icon
 import gohryt.sapphire.resources.Icons
 import gohryt.sapphire.resources.Colors
+import gohryt.sapphire.resources.Shapes
 import gohryt.sapphire.resources.Typography
 
+@Immutable
+@OptIn(
+    ExperimentalLayoutNodeApi::class,
+    ExperimentalLayout::class,
+    InternalLayoutApi::class,
+    ExperimentalUnsignedTypes::class
+)
 @RequiresApi(Build.VERSION_CODES.R)
 object Post {
     @Composable
-    fun Default(
+    fun default(
         colors: Colors.Data,
         typography: Typography.Data,
-        icons: Icons.Data
+        icons: Icons.Data,
+        shapes: Shapes.Data
     ) {
-        val counterState = remember {
-            mutableStateOf(
-                value = 0
-            )
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    all = 5.dp
-                )
-                .background(
-                    color = colors.backgroundMain,
-                    shape = RoundedCornerShape(
-                        size = 10.dp
-                    )
-                )
-        ) {
-            Row(
-                modifier = Modifier
-                    .padding(
-                        all = 5.dp
-                    )
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .padding(
-                                all = 5.dp
-                            )
-                            .background(
-                                color = colors.backgroundPoor,
-                                shape = RoundedCornerShape(
-                                    topLeft = 10.dp,
-                                    bottomRight = 10.dp
-                                )
-                            )
-                    ) {
-                        Image(
-                            asset = icons.group,
-                            modifier = Modifier
-                                .padding(
-                                    all = 5.dp
-                                )
-                                .size(
-                                    size = 30.dp
-                                )
-                        )
-                    }
-                    Column(
-                        modifier = Modifier
-                            .padding(
-                                all = 5.dp
-                            ),
-                        verticalArrangement = Arrangement.SpaceAround,
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        BasicText(
-                            text = "Alex",
-                            style = typography.h3.merge(
-                                TextStyle(
-                                    color = colors.text
-                                )
-                            )
-                        )
-                        BasicText(
-                            text = "21:39",
-                            style = typography.p3.merge(
-                                TextStyle(
-                                    color = colors.text
-                                )
-                            )
-                        )
-                    }
-                }
-                Column(
-                    modifier = Modifier
-                        .padding(
-                            all = 5.dp
-                        )
-                        .clickable(onClick = { counterState.value++ }),
-                    verticalArrangement = Arrangement.SpaceAround,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Image(
-                        asset = icons.eye,
-                        modifier = Modifier
-                            .padding(
-                                all = 2.5.dp
-                            )
-                            .size(
-                                size = 17.5.dp
-                            )
-                    )
-                    BasicText(
-                        text = "21",
-                        style = typography.p3.merge(
-                            TextStyle(
-                                color = colors.text
-                            )
-                        )
-                    )
-                }
-            }
-            Box(
-                modifier = Modifier
-                    .padding(
-                        all = 5.dp
-                    )
-                    .fillMaxWidth(),
-                alignment = Alignment.TopStart
-            ) {
-                Box(
-                    modifier = Modifier
-                        .padding(
-                            all = 5.dp
-                        )
-                        .fillMaxWidth(),
-                    alignment = Alignment.TopStart
-                ) {
-                    BasicText(
-                        text = "${counterState.value} Material is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.",
-                        style = typography.p2.merge(
-                            TextStyle(
-                                color = colors.text
-                            )
-                        )
-                    )
-                }
-            }
-        }
+        Icon.default(
+            asset = icons.eye,
+            modifier = Modifier.background(color = colors.accent).size(size = 40.dp)
+        )
     }
 }
+/*
+@Preview
+@Composable
+@RequiresApi(Build.VERSION_CODES.R)
+fun Pw() {
+    Post.Default(
+        Colors.get(),
+        Typography.get(),
+        Icons.get(),
+        Shapes.get()
+    )
+}
+ */

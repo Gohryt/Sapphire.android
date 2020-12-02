@@ -1,42 +1,62 @@
 package gohryt.sapphire.fragments
 
-import android.content.Context
-import android.content.res.Resources
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.unit.dp
+import gohryt.sapphire.layouts.Column
+import gohryt.sapphire.layouts.Spacer
+import gohryt.sapphire.models.Login
 import gohryt.sapphire.resources.*
+import gohryt.sapphire.support.Navigation
 
+@Immutable
+@OptIn(
+    ExperimentalLayoutNodeApi::class,
+    ExperimentalLayout::class,
+    InternalLayoutApi::class,
+    ExperimentalUnsignedTypes::class
+)
 @RequiresApi(Build.VERSION_CODES.R)
 object Auth {
     @Composable
-    fun Default(
-        navController: NavController,
-        context: Context,
-        resources: Resources,
-        screen: Screen.Data,
+    fun default(
+        navigation: Navigation.Data,
         colors: Colors.Data,
         typography: Typography.Data,
-        icons: Icons.Data
+        strings: Strings.Data,
+        icons: Icons.Data,
+        shapes: Shapes.Data,
+        screen: Screen.Data
     ) {
-        ScrollableColumn {
-            Spacer(
+        Column.scrollable(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer.default(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(screen.statusBarHeightDp)
+                    .height(height = (screen.statusBarHeight + 5).dp)
             )
-            for (i in 1..25) {
-                BasicText(text = "lol")
-                BasicText(text = "kek")
-            }
-            BasicText(text = "1")
+            Login.default(
+                navigation = navigation,
+                colors = colors,
+                typography = typography,
+                strings = strings,
+                icons = icons,
+                shapes = shapes,
+                screen = screen
+            )
+            Spacer.default(
+                modifier = Modifier
+                    .height(height = 5.dp)
+            )
         }
     }
 }
