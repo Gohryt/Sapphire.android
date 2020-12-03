@@ -31,8 +31,7 @@ object News {
         typography: Typography.Data,
         strings: Strings.Data,
         icons: Icons.Data,
-        shapes: Shapes.Data,
-        screen: Screen.Data
+        shapes: Shapes.Data
     ) {
         ScrollableColumn(
             modifier = Modifier
@@ -41,10 +40,6 @@ object News {
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            Spacer(
-                modifier = Modifier
-                    .height(height = screen.statusBarHeight.dp)
-            )
             for (i in 1..20) {
                 Post.default(
                     colors = colors,

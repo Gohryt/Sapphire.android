@@ -64,7 +64,6 @@ class Activity : AppCompatActivity() {
             val strings = Strings.get()
             val icons = Icons.get()
             val shapes = Shapes.get()
-            val screen = Screen.get()
 
             NavHost(
                 navController = navigation.controller,
@@ -79,8 +78,7 @@ class Activity : AppCompatActivity() {
                         typography = typography,
                         strings = strings,
                         icons = icons,
-                        shapes = shapes,
-                        screen = screen
+                        shapes = shapes
                     )
                 }
                 composable(
@@ -92,8 +90,7 @@ class Activity : AppCompatActivity() {
                         typography = typography,
                         strings = strings,
                         icons = icons,
-                        shapes = shapes,
-                        screen = screen
+                        shapes = shapes
                     )
                 }
             }

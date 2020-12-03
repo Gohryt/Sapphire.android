@@ -34,8 +34,7 @@ object Login {
         typography: Typography.Data,
         strings: Strings.Data,
         icons: Icons.Data,
-        shapes: Shapes.Data,
-        screen: Screen.Data
+        shapes: Shapes.Data
     ) {
         Column.default(
             modifier = Modifier

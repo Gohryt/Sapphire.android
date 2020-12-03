@@ -31,8 +31,7 @@ object Auth {
         typography: Typography.Data,
         strings: Strings.Data,
         icons: Icons.Data,
-        shapes: Shapes.Data,
-        screen: Screen.Data
+        shapes: Shapes.Data
     ) {
         Column.scrollable(
             modifier = Modifier
@@ -42,7 +41,7 @@ object Auth {
         ) {
             Spacer.default(
                 modifier = Modifier
-                    .height(height = (screen.statusBarHeight + 5).dp)
+                    .height(height = 5.dp)
             )
             Login.default(
                 navigation = navigation,
@@ -50,8 +49,7 @@ object Auth {
                 typography = typography,
                 strings = strings,
                 icons = icons,
-                shapes = shapes,
-                screen = screen
+                shapes = shapes
             )
             Spacer.default(
                 modifier = Modifier
