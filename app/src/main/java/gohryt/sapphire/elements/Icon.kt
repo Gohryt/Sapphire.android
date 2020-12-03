@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.DefaultAlpha
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
@@ -28,24 +28,14 @@ import kotlin.math.min
 object Icon {
     @Composable
     fun default(
-        asset: VectorAsset,
+        asset: ImageVector,
         modifier: Modifier,
-        scale: Float = 0.8f
     ) {
         Image(
             painter = rememberVectorPainter(asset),
             modifier = modifier,
             alignment = Alignment.Center,
-            contentScale = object : ContentScale {
-                override fun computeScaleFactor(srcSize: Size, dstSize: Size): ScaleFactor {
-                    return min(
-                        a = (dstSize.width / srcSize.width),
-                        b = (dstSize.height / srcSize.height)
-                    ).let {
-                        ScaleFactor(it * scale, it * scale)
-                    }
-                }
-            },
+            contentScale = ContentScale.Fit,
             alpha = DefaultAlpha,
             colorFilter = null
         )

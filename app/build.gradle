@@ -39,20 +39,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
         freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check", '-Xopt-in=kotlin.RequiresOptIn']
-        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion '1.4.10'
-        kotlinCompilerExtensionVersion '1.0.0-alpha07'
+        kotlinCompilerVersion '1.4.20'
+        kotlinCompilerExtensionVersion '1.0.0-alpha08'
     }
     dependenciesInfo {
         includeInApk false
@@ -61,11 +60,13 @@ android {
 }
 dependencies {
     implementation fileTree(include: 'libgo.aar', dir: 'libs')
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.10'
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.20'
     implementation 'androidx.core:core-ktx:1.5.0-alpha05'
     implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
-    implementation 'androidx.navigation:navigation-compose:1.0.0-alpha02'
-    implementation 'androidx.compose.compiler:compiler:1.0.0-alpha07'
-    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha07'
-    implementation 'androidx.compose.ui:ui:1.0.0-alpha07'
+
+    implementation 'androidx.navigation:navigation-compose:1.0.0-alpha03'
+    implementation 'androidx.compose.compiler:compiler:1.0.0-alpha08'
+    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha08'
+    implementation 'androidx.compose.ui:ui:1.0.0-alpha08'
 }

@@ -27,13 +27,13 @@ object Row {
         modifier: Modifier = Modifier,
         horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
         verticalAlignment: Alignment.Vertical = Alignment.Top,
-        children: @Composable RowScope.() -> Unit
+        content: @Composable RowScope.() -> Unit
     ) {
         Row(
             modifier = modifier,
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = verticalAlignment,
-            children = children
+            content = content
         )
     }
 
@@ -46,7 +46,7 @@ object Row {
         reverseScrollDirection: Boolean = false,
         isScrollEnabled: Boolean = true,
         contentPadding: PaddingValues = PaddingValues(0.dp),
-        children: @Composable RowScope.() -> Unit
+        content: @Composable RowScope.() -> Unit
     ) {
         Row(
             modifier = modifier
@@ -59,7 +59,7 @@ object Row {
                 .padding(contentPadding),
             horizontalArrangement = horizontalArrangement,
             verticalAlignment = verticalAlignment,
-            children = children
+            content = content
         )
     }
 }

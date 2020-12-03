@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.platform.ContextAmbient
 
 @Immutable
@@ -25,7 +26,7 @@ object Screen {
 
     @Composable
     fun get(): Data {
-        val resources = ContextAmbient.current.resources
+        val resources = AmbientContext.current.resources
         val statusBarHeight = resources.getDimension(
             resources.getIdentifier(
                 "status_bar_height",

@@ -28,13 +28,13 @@ object Column {
         modifier: Modifier = Modifier,
         verticalArrangement: Arrangement.Vertical = Arrangement.Top,
         horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-        children: @Composable ColumnScope.() -> Unit
+        content: @Composable ColumnScope.() -> Unit
     ) {
         Column(
             modifier = modifier,
             verticalArrangement = verticalArrangement,
             horizontalAlignment = horizontalAlignment,
-            children = children
+            content = content
         )
     }
 
@@ -47,7 +47,7 @@ object Column {
         reverseScrollDirection: Boolean = false,
         isScrollEnabled: Boolean = true,
         contentPadding: PaddingValues = PaddingValues(0.dp),
-        children: @Composable ColumnScope.() -> Unit
+        content: @Composable ColumnScope.() -> Unit
     ) {
         Column(
             modifier = modifier
@@ -60,7 +60,7 @@ object Column {
                 .padding(contentPadding),
             verticalArrangement = verticalArrangement,
             horizontalAlignment = horizontalAlignment,
-            children = children
+            content = content
         )
     }
 }

@@ -13,7 +13,6 @@ import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.platform.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import gohryt.sapphire.fragments.Auth
 import gohryt.sapphire.fragments.News
 import gohryt.sapphire.resources.*

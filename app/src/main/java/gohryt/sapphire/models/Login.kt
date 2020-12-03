@@ -1,22 +1,17 @@
 package gohryt.sapphire.models
 
-import android.content.Context
-import android.content.res.Resources
-import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.navigation.compose.navigate
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
-import androidx.compose.ui.platform.UriHandlerAmbient
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import gohryt.sapphire.elements.Input
 import gohryt.sapphire.elements.Text
 import gohryt.sapphire.layouts.Column
@@ -63,7 +58,7 @@ object Login {
                     .padding(all = 5.dp)
                     .clickable(
                         onClick = {
-                            navigation.controller.navigate(Uri.parse("News"))
+                            navigation.controller.navigate(navigation.news)
                         }
                     ),
                 text = strings.loginEnter,

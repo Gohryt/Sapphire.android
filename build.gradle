@@ -2,13 +2,13 @@ buildscript {
     repositories {
         google()
         jcenter()
-        flatDir{
+        flatDir {
             dirs 'libs'
         }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha01'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20"
     }
 }
 allprojects {

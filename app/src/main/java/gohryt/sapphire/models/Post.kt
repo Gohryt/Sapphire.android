@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.InternalLayoutApi
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -35,20 +36,7 @@ object Post {
     ) {
         Icon.default(
             asset = icons.eye,
-            modifier = Modifier.background(color = colors.accent).size(size = 40.dp)
+            modifier = Modifier.background(color = colors.accent).size(size = 40.dp).padding(10.dp)
         )
     }
 }
-/*
-@Preview
-@Composable
-@RequiresApi(Build.VERSION_CODES.R)
-fun Pw() {
-    Post.Default(
-        Colors.get(),
-        Typography.get(),
-        Icons.get(),
-        Shapes.get()
-    )
-}
- */
