@@ -2,17 +2,19 @@ package gohryt.sapphire.fragments
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import gohryt.sapphire.models.Post
 import gohryt.sapphire.resources.*
+import gohryt.sapphire.layouts.Spacer
+import gohryt.sapphire.layouts.Column
+import gohryt.sapphire.models.Post
 import gohryt.sapphire.support.Navigation
 
 @Immutable
@@ -27,19 +29,28 @@ object News {
     @Composable
     fun default(
         navigation: Navigation.Data,
+        screen: Screen.Data,
+        strings: Strings.Data,
         colors: Colors.Data,
         typography: Typography.Data,
-        strings: Strings.Data,
         icons: Icons.Data,
         shapes: Shapes.Data
     ) {
-        ScrollableColumn(
+        Column.scrollable(
             modifier = Modifier
-                .fillMaxSize(),
+                .height(592.dp)
+                .fillMaxWidth(),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
+            if (screen.top > 0) {
+                Spacer.default(
+                    modifier = Modifier
+                        .height(height = screen.top.dp)
+                        .fillMaxWidth()
+                )
+            }
             for (i in 1..20) {
                 Post.default(
                     colors = colors,

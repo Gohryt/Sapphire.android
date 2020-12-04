@@ -6,6 +6,8 @@
         <item name="android:navigationBarColor" tools:targetApi="27">@color/backgroundPoor</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="29">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
         <item name="android:windowBackground">@color/backgroundPoor</item>
     </style>
 </resources>

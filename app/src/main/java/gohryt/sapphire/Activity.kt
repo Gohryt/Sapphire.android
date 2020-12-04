@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.platform.setContent
+import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import gohryt.sapphire.fragments.Auth
@@ -57,11 +58,16 @@ class Activity : AppCompatActivity() {
         val propertiesUser = Libgo.getPropertiesUser()
 
         setContent {
+            window.statusBarColor = getColor(R.color.transparent)
+            window.navigationBarColor = getColor(R.color.transparent)
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+
             val navigation = Navigation.get()
+            val screen = Screen.get()
+            val strings = Strings.get()
 
             val colors = Colors.get()
             val typography = Typography.get()
-            val strings = Strings.get()
             val icons = Icons.get()
             val shapes = Shapes.get()
 
@@ -74,6 +80,7 @@ class Activity : AppCompatActivity() {
                 ) {
                     Auth.default(
                         navigation = navigation,
+                        screen = screen,
                         colors = colors,
                         typography = typography,
                         strings = strings,
@@ -86,6 +93,7 @@ class Activity : AppCompatActivity() {
                 ) {
                     News.default(
                         navigation = navigation,
+                        screen = screen,
                         colors = colors,
                         typography = typography,
                         strings = strings,

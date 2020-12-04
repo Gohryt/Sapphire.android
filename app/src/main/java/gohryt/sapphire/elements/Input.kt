@@ -12,7 +12,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.text.input.TextFieldValue
-import gohryt.sapphire.resources.Strings
 
 @Immutable
 @OptIn(

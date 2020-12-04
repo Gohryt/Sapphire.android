@@ -30,9 +30,9 @@ object Login {
     @Composable
     fun default(
         navigation: Navigation.Data,
+        strings: Strings.Data,
         colors: Colors.Data,
         typography: Typography.Data,
-        strings: Strings.Data,
         icons: Icons.Data,
         shapes: Shapes.Data
     ) {
