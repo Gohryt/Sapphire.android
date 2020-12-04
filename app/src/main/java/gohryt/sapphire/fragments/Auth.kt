@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.unit.dp
 import gohryt.sapphire.layouts.Column
+import gohryt.sapphire.layouts.Row
 import gohryt.sapphire.layouts.Spacer
 import gohryt.sapphire.models.Login
 import gohryt.sapphire.resources.*
@@ -34,28 +35,58 @@ object Auth {
         icons: Icons.Data,
         shapes: Shapes.Data
     ) {
-        Column.scrollable(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer.default(
+        Row.default {
+            if (screen.left >0) {
+                Spacer.default(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(width = screen.left.dp)
+                )
+            }
+            Column.default(
                 modifier = Modifier
-                    .height(height = 5.dp)
-            )
-            Login.default(
-                navigation = navigation,
-                colors = colors,
-                typography = typography,
-                strings = strings,
-                icons = icons,
-                shapes = shapes
-            )
-            Spacer.default(
-                modifier = Modifier
-                    .height(height = 5.dp)
-            )
+                    .fillMaxHeight()
+                    .weight(1f)
+            ) {
+                Column.scrollable(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                )
+                {
+                    if (screen.top > 0) {
+                        Spacer.default(
+                            modifier = Modifier
+                                .height(height = screen.top.dp)
+                                .fillMaxWidth()
+                        )
+                    }
+                    Login.default(
+                        navigation = navigation,
+                        colors = colors,
+                        typography = typography,
+                        strings = strings,
+                        icons = icons,
+                        shapes = shapes
+                    )
+                }
+                if (screen.bottom > 0) {
+                    Spacer.default(
+                        modifier = Modifier
+                            .height(height = screen.bottom.dp)
+                            .fillMaxWidth()
+                    )
+                }
+            }
+            if (screen.right >0) {
+                Spacer.default(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(width = screen.right.dp)
+                )
+            }
         }
     }
 }

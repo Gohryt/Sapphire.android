@@ -13,6 +13,7 @@ import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.unit.dp
 import gohryt.sapphire.resources.*
 import gohryt.sapphire.layouts.Spacer
+import gohryt.sapphire.layouts.Row
 import gohryt.sapphire.layouts.Column
 import gohryt.sapphire.models.Post
 import gohryt.sapphire.support.Navigation
@@ -36,27 +37,57 @@ object News {
         icons: Icons.Data,
         shapes: Shapes.Data
     ) {
-        Column.scrollable(
-            modifier = Modifier
-                .height(592.dp)
-                .fillMaxWidth(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        )
-        {
-            if (screen.top > 0) {
+        Row.default {
+            if (screen.left >0) {
                 Spacer.default(
                     modifier = Modifier
-                        .height(height = screen.top.dp)
-                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .width(width = screen.left.dp)
                 )
             }
-            for (i in 1..20) {
-                Post.default(
-                    colors = colors,
-                    typography = typography,
-                    icons = icons,
-                    shapes = shapes
+            Column.default(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f)
+            ) {
+                Column.scrollable(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                )
+                {
+                    if (screen.top > 0) {
+                        Spacer.default(
+                            modifier = Modifier
+                                .height(height = screen.top.dp)
+                                .fillMaxWidth()
+                        )
+                    }
+                    for (i in 1..20) {
+                        Post.default(
+                            colors = colors,
+                            typography = typography,
+                            icons = icons,
+                            shapes = shapes
+                        )
+                    }
+                }
+                if (screen.bottom > 0) {
+                    Spacer.default(
+                        modifier = Modifier
+                            .height(height = screen.bottom.dp)
+                            .fillMaxWidth()
+                            .background(color = colors.backgroundMain)
+                    )
+                }
+            }
+            if (screen.right >0) {
+                Spacer.default(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(width = screen.right.dp)
                 )
             }
         }
