@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -12,12 +13,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -62,5 +65,23 @@ object Column {
             horizontalAlignment = horizontalAlignment,
             content = content
         )
+    }
+    @Composable
+    fun <T> lazy(
+        items: List<T>,
+        modifier: Modifier = Modifier,
+        state: LazyListState = rememberLazyListState(),
+        contentPadding: PaddingValues = PaddingValues(0.dp),
+        horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+        itemContent: @Composable LazyItemScope.(T) -> Unit
+    ) {
+        LazyColumn(
+            modifier = modifier,
+            state = state,
+            contentPadding = contentPadding,
+            horizontalAlignment = horizontalAlignment
+        ) {
+            items(items, itemContent)
+        }
     }
 }

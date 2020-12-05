@@ -9,6 +9,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.platform.AmbientView
+import androidx.compose.ui.text.InternalTextApi
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -16,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -31,13 +33,12 @@ object Screen {
     @Composable
     fun get(): Data {
         val density = AmbientContext.current.resources.displayMetrics.density
-        val insets = ViewCompat.getRootWindowInsets(AmbientView.current)!!
-            .getInsets(WindowInsetsCompat.Type.systemBars())
+        val insets = ViewCompat.getRootWindowInsets(AmbientView.current.rootView)!!.getInsets(WindowInsetsCompat.Type.systemBars())
         return Data(
-            top = insets.top / density,
-            right = insets.right / density,
-            bottom = insets.bottom / density,
-            left = insets.left / density
+            top = (insets.top / density),
+            right = (insets.right / density),
+            bottom = (insets.bottom / density),
+            left = (insets.left / density)
         )
     }
 }

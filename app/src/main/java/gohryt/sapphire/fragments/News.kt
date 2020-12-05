@@ -5,11 +5,11 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
 import gohryt.sapphire.resources.*
 import gohryt.sapphire.layouts.Spacer
@@ -22,6 +22,7 @@ import gohryt.sapphire.support.Navigation
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -38,7 +39,7 @@ object News {
         shapes: Shapes.Data
     ) {
         Row.default {
-            if (screen.left >0) {
+            if (screen.left > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()
@@ -50,29 +51,50 @@ object News {
                     .fillMaxHeight()
                     .weight(1f)
             ) {
-                Column.scrollable(
+                Column.lazy(
+                    items = listOf(
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false
+                    ),
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth(),
-                    verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.CenterHorizontally
-                )
-                {
-                    if (screen.top > 0) {
+                ) { item ->
+                    if (item && screen.top > 0) {
                         Spacer.default(
                             modifier = Modifier
                                 .height(height = screen.top.dp)
                                 .fillMaxWidth()
                         )
                     }
-                    for (i in 1..20) {
-                        Post.default(
-                            colors = colors,
-                            typography = typography,
-                            icons = icons,
-                            shapes = shapes
-                        )
-                    }
+                    Post.default(
+                        navigation = navigation,
+                        screen = screen,
+                        colors = colors,
+                        typography = typography,
+                        strings = strings,
+                        icon = if (item) icons.eye else icons.group,
+                        shapes = shapes
+                    )
                 }
                 if (screen.bottom > 0) {
                     Spacer.default(
@@ -83,7 +105,7 @@ object News {
                     )
                 }
             }
-            if (screen.right >0) {
+            if (screen.right > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()

@@ -9,12 +9,14 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.InternalTextApi
 import gohryt.sapphire.R
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )

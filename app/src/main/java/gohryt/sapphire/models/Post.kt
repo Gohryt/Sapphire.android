@@ -10,18 +10,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
 import gohryt.sapphire.elements.Icon
-import gohryt.sapphire.resources.Icons
-import gohryt.sapphire.resources.Colors
-import gohryt.sapphire.resources.Shapes
-import gohryt.sapphire.resources.Typography
+import gohryt.sapphire.resources.*
+import gohryt.sapphire.support.Navigation
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -29,14 +30,17 @@ import gohryt.sapphire.resources.Typography
 object Post {
     @Composable
     fun default(
+        navigation: Navigation.Data,
+        screen: Screen.Data,
+        strings: Strings.Data,
         colors: Colors.Data,
         typography: Typography.Data,
-        icons: Icons.Data,
+        icon: ImageVector,
         shapes: Shapes.Data
     ) {
         Icon.default(
-            asset = icons.eye,
-            modifier = Modifier.background(color = colors.accent).size(size = 40.dp).padding(10.dp)
+            asset = icon,
+            modifier = Modifier.background(color = colors.backgroundMain).size(size = 40.dp).padding(10.dp)
         )
     }
 }

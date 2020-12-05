@@ -8,6 +8,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
 import gohryt.sapphire.layouts.Column
 import gohryt.sapphire.layouts.Row
@@ -20,6 +21,7 @@ import gohryt.sapphire.support.Navigation
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -63,14 +65,23 @@ object Auth {
                                 .fillMaxWidth()
                         )
                     }
-                    Login.default(
-                        navigation = navigation,
-                        colors = colors,
-                        typography = typography,
-                        strings = strings,
-                        icons = icons,
-                        shapes = shapes
-                    )
+                    Column.default(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Login.default(
+                            navigation = navigation,
+                            screen = screen,
+                            colors = colors,
+                            typography = typography,
+                            strings = strings,
+                            icons = icons,
+                            shapes = shapes
+                        )
+                    }
                 }
                 if (screen.bottom > 0) {
                     Spacer.default(

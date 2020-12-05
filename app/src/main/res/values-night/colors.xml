@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="iconAccent">#007FFF</color>
-    <color name="iconBackground">#ffffff</color>
-    <color name="navigationBarLegacy">#FF000000</color>
+    <color name="iconAccent">#FF007FFF</color>
+    <color name="iconBackground">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
-    <color name="text">#FFFFFFFF</color>
-    <color name="accent">#FF007FFF</color>
+    <color name="foregroundMain">#FFFFFFFF</color>
+    <color name="foregroundPoor">#FF808080</color>
+    <color name="foregroundAccent">#FFFFFFFF</color>
     <color name="backgroundMain">#FF262626</color>
     <color name="backgroundPoor">#FF141414</color>
+    <color name="backgroundAccent">#FF007FFF</color>
 </resources>

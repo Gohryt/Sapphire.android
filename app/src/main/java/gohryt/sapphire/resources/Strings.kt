@@ -8,12 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.InternalTextApi
 import gohryt.sapphire.R
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -22,7 +24,9 @@ object Strings {
     data class Data(
         var appName: String,
         var loginEnter: String,
-        var loginUsername: String
+        var loginUsername: String,
+        var loginPassword: String,
+        var loginConfirm: String
     )
 
     @Composable
@@ -30,7 +34,9 @@ object Strings {
         return Data(
             appName = stringResource(R.string.app_name),
             loginEnter = stringResource(R.string.login_enter),
-            loginUsername = stringResource(id = R.string.login_username)
+            loginUsername = stringResource(id = R.string.login_username),
+            loginPassword = stringResource(id = R.string.login_password),
+            loginConfirm = stringResource(id = R.string.login_confirm)
         )
     }
 }

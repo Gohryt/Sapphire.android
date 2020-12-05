@@ -9,12 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -28,10 +30,10 @@ object Shapes {
     @Composable
     fun get(): Data {
         return Data(
-            full = RoundedCornerShape(size = 10.dp),
+            full = RoundedCornerShape(size = 8.dp),
             topLeftBottomRight = RoundedCornerShape(
-                topLeft = 10.dp,
-                bottomRight = 10.dp
+                topLeft = 8.dp,
+                bottomRight = 8.dp
             )
         )
     }

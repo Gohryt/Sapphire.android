@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sapphire</string>
-    <string name="login_enter">Войти</string>
-    <string name="login_username">Телефон или электронная почта</string>
+    <string name="login_enter">Войти через ВК</string>
+    <string name="login_username">Телефон или имейл</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_confirm">Подтвердить</string>
 </resources>

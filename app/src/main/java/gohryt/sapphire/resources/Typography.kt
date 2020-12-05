@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
+import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.sp
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -38,19 +40,19 @@ object Typography {
     fun get(): Data {
         return Data(
             h1 = TextStyle(
-                fontSize = 20.sp,
-                fontWeight = FontWeight.SemiBold,
-                fontStyle = FontStyle.Normal,
-                fontFamily = FontFamily.Default
-            ),
-            h2 = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 fontStyle = FontStyle.Normal,
                 fontFamily = FontFamily.Default
             ),
-            h3 = TextStyle(
+            h2 = TextStyle(
                 fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                fontStyle = FontStyle.Normal,
+                fontFamily = FontFamily.Default
+            ),
+            h3 = TextStyle(
+                fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
                 fontStyle = FontStyle.Normal,
                 fontFamily = FontFamily.Default

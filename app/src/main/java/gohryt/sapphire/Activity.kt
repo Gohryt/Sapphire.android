@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.text.InternalTextApi
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,13 +19,13 @@ import gohryt.sapphire.fragments.Auth
 import gohryt.sapphire.fragments.News
 import gohryt.sapphire.resources.*
 import gohryt.sapphire.support.Navigation
-import libgo.Libgo
 import java.util.*
 
 @Immutable
 @OptIn(
     ExperimentalLayoutNodeApi::class,
     ExperimentalLayout::class,
+    InternalTextApi::class,
     InternalLayoutApi::class,
     ExperimentalUnsignedTypes::class
 )
@@ -32,30 +33,6 @@ import java.util.*
 class Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
-        val memoryInfo = ActivityManager.MemoryInfo()
-        activityManager.getMemoryInfo(memoryInfo)
-
-        Libgo.configureGC(
-            Runtime.getRuntime().availableProcessors(),
-            memoryInfo.totalMem
-        )
-        val variables = Libgo.getVariables(
-            applicationInfo.packageName,
-            applicationInfo.dataDir,
-            Build.VERSION.RELEASE,
-            Build.SUPPORTED_ABIS[0],
-            Build.MODEL,
-            Locale.getDefault().language,
-            Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID),
-            Build.VERSION.SDK_INT,
-            resources.displayMetrics.heightPixels,
-            resources.displayMetrics.widthPixels
-        )
-        val session = Libgo.getSession()
-        val propertiesCore = Libgo.getPropertiesCore()
-        val propertiesUser = Libgo.getPropertiesUser()
 
         setContent {
             window.statusBarColor = getColor(R.color.transparent)
@@ -71,9 +48,11 @@ class Activity : AppCompatActivity() {
             val icons = Icons.get()
             val shapes = Shapes.get()
 
+            println(Rust().hello("alex"))
+
             NavHost(
                 navController = navigation.controller,
-                startDestination = propertiesUser.defaultPage
+                startDestination = navigation.auth
             ) {
                 composable(
                     route = navigation.auth
@@ -107,7 +86,6 @@ class Activity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        Libgo.gc()
         System.gc()
     }
 }

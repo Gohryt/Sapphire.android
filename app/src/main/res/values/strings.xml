@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sapphire</string>
-    <string name="login_enter">Enter</string>
+    <string name="login_enter">Enter with VK</string>
     <string name="login_username">Email or phone number</string>
+    <string name="login_password">Password</string>
+    <string name="login_confirm">Confirm</string>
 </resources>
