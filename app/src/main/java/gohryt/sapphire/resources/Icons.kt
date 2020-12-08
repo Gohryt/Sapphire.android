@@ -1,15 +1,22 @@
 package gohryt.sapphire.resources
 
+import android.content.Context
+import android.graphics.drawable.VectorDrawable
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.InternalTextApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.graphics.drawable.toBitmap
 import gohryt.sapphire.R
 
 @Immutable
@@ -37,7 +44,7 @@ object Icons {
             eye = vectorResource(id = R.drawable.icon_eye),
             share = vectorResource(id = R.drawable.icon_share),
             comment = vectorResource(id = R.drawable.icon_comment),
-            like = vectorResource(id = R.drawable.icon_like)
+            like = vectorResource(id = R.drawable.icon_like),
         )
     }
 }

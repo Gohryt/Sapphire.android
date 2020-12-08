@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
+import gohryt.sapphire.elements.Icon
 import gohryt.sapphire.layouts.Column
 import gohryt.sapphire.layouts.Row
 import gohryt.sapphire.layouts.Spacer
@@ -38,11 +39,11 @@ object Auth {
         shapes: Shapes.Data
     ) {
         Row.default {
-            if (screen.left >0) {
+            if (screen.insetLeft.real > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(width = screen.left.dp)
+                        .width(width = screen.insetLeft.dp)
                 )
             }
             Column.default(
@@ -58,10 +59,10 @@ object Auth {
                     horizontalAlignment = Alignment.CenterHorizontally
                 )
                 {
-                    if (screen.top > 0) {
+                    if (screen.insetTop.real > 0) {
                         Spacer.default(
                             modifier = Modifier
-                                .height(height = screen.top.dp)
+                                .height(height = screen.insetTop.dp)
                                 .fillMaxWidth()
                         )
                     }
@@ -83,19 +84,19 @@ object Auth {
                         )
                     }
                 }
-                if (screen.bottom > 0) {
+                if (screen.insetBottom.real > 0) {
                     Spacer.default(
                         modifier = Modifier
-                            .height(height = screen.bottom.dp)
+                            .height(height = screen.insetBottom.dp)
                             .fillMaxWidth()
                     )
                 }
             }
-            if (screen.right >0) {
+            if (screen.insetRight.real > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(width = screen.right.dp)
+                        .width(width = screen.insetRight.dp)
                 )
             }
         }

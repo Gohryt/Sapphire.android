@@ -39,11 +39,11 @@ object News {
         shapes: Shapes.Data
     ) {
         Row.default {
-            if (screen.left > 0) {
+            if (screen.insetLeft.real > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(width = screen.left.dp)
+                        .width(width = screen.insetLeft.dp)
                 )
             }
             Column.default(
@@ -79,10 +79,10 @@ object News {
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) { item ->
-                    if (item && screen.top > 0) {
+                    if (item && screen.insetTop.real > 0) {
                         Spacer.default(
                             modifier = Modifier
-                                .height(height = screen.top.dp)
+                                .height(height = screen.insetTop.dp)
                                 .fillMaxWidth()
                         )
                     }
@@ -92,24 +92,24 @@ object News {
                         colors = colors,
                         typography = typography,
                         strings = strings,
-                        icon = if (item) icons.eye else icons.group,
+                        icons = icons,
                         shapes = shapes
                     )
                 }
-                if (screen.bottom > 0) {
+                if (screen.insetBottom.real > 0) {
                     Spacer.default(
                         modifier = Modifier
-                            .height(height = screen.bottom.dp)
+                            .height(height = screen.insetBottom.dp)
                             .fillMaxWidth()
                             .background(color = colors.backgroundMain)
                     )
                 }
             }
-            if (screen.right > 0) {
+            if (screen.insetRight.real > 0) {
                 Spacer.default(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .width(width = screen.right.dp)
+                        .width(width = screen.insetRight.dp)
                 )
             }
         }

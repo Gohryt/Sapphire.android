@@ -6,22 +6,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextOverflow
 
 @Immutable
 @OptIn(

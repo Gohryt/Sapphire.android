@@ -5,17 +5,13 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.InternalLayoutApi
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.CoreText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.InternalTextApi
-import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 

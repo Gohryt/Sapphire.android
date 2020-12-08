@@ -11,8 +11,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha02'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20'
-        classpath 'gradle.plugin.org.mozilla.rust-android-gradle:plugin:0.8.3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21'
     }
 }
 allprojects {

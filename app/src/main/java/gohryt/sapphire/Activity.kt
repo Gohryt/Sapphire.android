@@ -3,7 +3,9 @@ package gohryt.sapphire
 import android.app.ActivityManager
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
+import android.provider.Settings.Secure
+import android.util.DisplayMetrics
+import android.view.Display
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.ExperimentalLayout
@@ -18,8 +20,8 @@ import androidx.navigation.compose.composable
 import gohryt.sapphire.fragments.Auth
 import gohryt.sapphire.fragments.News
 import gohryt.sapphire.resources.*
-import gohryt.sapphire.support.Navigation
-import java.util.*
+import gohryt.sapphire.support.*
+import engine.Engine
 
 @Immutable
 @OptIn(
@@ -34,21 +36,41 @@ class Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
-            window.statusBarColor = getColor(R.color.transparent)
-            window.navigationBarColor = getColor(R.color.transparent)
-            WindowCompat.setDecorFitsSystemWindows(window, false)
+        val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+        val memoryInfo = ActivityManager.MemoryInfo()
+        activityManager.getMemoryInfo(memoryInfo)
+        val display = display as Display
+        val metrics = DisplayMetrics()
+        display.getRealMetrics(metrics)
 
+        Engine.initialize(
+            packageName,
+            dataDir.absolutePath,
+            Build.MODEL,
+            Secure.getString(contentResolver, Secure.ANDROID_ID),
+            Build.SUPPORTED_ABIS[0],
+            Runtime.getRuntime().availableProcessors(),
+            memoryInfo.totalMem,
+            Build.VERSION.SDK_INT,
+            metrics.heightPixels,
+            metrics.widthPixels
+        )
+
+        Engine.getSession()
+
+        window.statusBarColor = getColor(R.color.transparent)
+        window.navigationBarColor = getColor(R.color.transparent)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        setContent {
             val navigation = Navigation.get()
             val screen = Screen.get()
-            val strings = Strings.get()
 
+            val strings = Strings.get()
             val colors = Colors.get()
             val typography = Typography.get()
             val icons = Icons.get()
             val shapes = Shapes.get()
-
-            println(Rust().hello("alex"))
 
             NavHost(
                 navController = navigation.controller,
@@ -84,8 +106,9 @@ class Activity : AppCompatActivity() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onPause() {
+        super.onPause()
         System.gc()
+        Engine.gc()
     }
 }

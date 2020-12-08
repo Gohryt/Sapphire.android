@@ -32,7 +32,7 @@ object Icon {
         modifier: Modifier,
     ) {
         Image(
-            painter = rememberVectorPainter(asset),
+            painter = rememberVectorPainter(image = asset),
             modifier = modifier,
             alignment = Alignment.Center,
             contentScale = ContentScale.Fit,

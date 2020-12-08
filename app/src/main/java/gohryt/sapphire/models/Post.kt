@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.node.ExperimentalLayoutNodeApi
 import androidx.compose.ui.text.InternalTextApi
 import androidx.compose.ui.unit.dp
@@ -35,11 +34,11 @@ object Post {
         strings: Strings.Data,
         colors: Colors.Data,
         typography: Typography.Data,
-        icon: ImageVector,
+        icons: Icons.Data,
         shapes: Shapes.Data
     ) {
         Icon.default(
-            asset = icon,
+            asset = icons.eye,
             modifier = Modifier.background(color = colors.backgroundMain).size(size = 40.dp).padding(10.dp)
         )
     }

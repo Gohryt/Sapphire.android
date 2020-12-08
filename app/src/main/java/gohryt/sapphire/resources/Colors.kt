@@ -23,8 +23,6 @@ import gohryt.sapphire.R
 @RequiresApi(Build.VERSION_CODES.R)
 object Colors {
     data class Data(
-        var iconAccent: Color,
-        var iconBackground: Color,
         var transparent: Color,
         var foregroundMain: Color,
         var foregroundPoor: Color,
@@ -37,15 +35,13 @@ object Colors {
     @Composable
     fun get(): Data {
         return Data(
-            iconAccent = colorResource(id = R.color.iconAccent),
-            iconBackground = colorResource(id = R.color.iconBackground),
-            transparent = colorResource(id = R.color.transparent),
-            foregroundMain = colorResource(id = R.color.foregroundMain),
-            foregroundPoor = colorResource(id = R.color.foregroundPoor),
-            foregroundAccent = colorResource(id = R.color.foregroundAccent),
-            backgroundMain = colorResource(id = R.color.backgroundMain),
-            backgroundPoor = colorResource(id = R.color.backgroundPoor),
-            backgroundAccent = colorResource(id = R.color.backgroundAccent)
+            transparent = colorResource(R.color.transparent),
+            foregroundMain = colorResource(R.color.foregroundMain),
+            foregroundPoor = colorResource(R.color.foregroundPoor),
+            foregroundAccent = colorResource(R.color.foregroundAccent),
+            backgroundMain = colorResource(R.color.backgroundMain),
+            backgroundPoor = colorResource(R.color.backgroundPoor),
+            backgroundAccent = colorResource(R.color.backgroundAccent)
         )
     }
 }
