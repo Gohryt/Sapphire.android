@@ -3,6 +3,34 @@ plugins {
     id 'kotlin-android'
 }
 android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "gohryt.sapphire"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 2
+        versionName "2020.12.15.1"
+        multiDexEnabled false
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'release.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            multiDexEnabled false
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles 'debug.pro'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            multiDexEnabled false
+        }
+    }
     splits {
         abi {
             enable true
@@ -11,51 +39,12 @@ android {
             universalApk false
         }
     }
-    compileSdkVersion 30
-    ndkVersion '22.0.6917172'
-    buildToolsVersion '30.0.3'
-    defaultConfig {
-        applicationId "gohryt.sapphire"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionName '2020.12.8.1'
-        multiDexEnabled false
-        versionCode 1
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-            multiDexEnabled false
-            shrinkResources true
-            proguardFiles 'proguard-rules.pro'
-            renderscriptDebuggable false
-            jniDebuggable false
-            debuggable false
-        }
-        debug {
-            minifyEnabled true
-            multiDexEnabled false
-            shrinkResources true
-            proguardFiles 'proguard-rules.pro'
-            renderscriptDebuggable true
-            jniDebuggable true
-            debuggable true
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '11'
-        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check", '-Xopt-in=kotlin.RequiresOptIn']
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerVersion '1.4.21'
-        kotlinCompilerExtensionVersion '1.0.0-alpha08'
     }
     dependenciesInfo {
         includeInApk false
@@ -64,13 +53,7 @@ android {
 }
 dependencies {
     implementation fileTree(include: 'engine.aar', dir: 'libs')
-
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.21'
     implementation 'androidx.core:core-ktx:1.5.0-alpha05'
     implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
-
-    implementation 'androidx.navigation:navigation-compose:1.0.0-alpha03'
-    implementation 'androidx.compose.compiler:compiler:1.0.0-alpha08'
-    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha08'
-    implementation 'androidx.compose.ui:ui:1.0.0-alpha08'
 }

@@ -8,107 +8,99 @@ import android.util.DisplayMetrics
 import android.view.Display
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.ExperimentalLayout
-import androidx.compose.foundation.layout.InternalLayoutApi
-import androidx.compose.runtime.Immutable
-import androidx.compose.ui.node.ExperimentalLayoutNodeApi
-import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.text.InternalTextApi
 import androidx.core.view.WindowCompat
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import gohryt.sapphire.fragments.Auth
-import gohryt.sapphire.fragments.News
+import engine.*
+import gohryt.sapphire.fragments.Login
+import gohryt.sapphire.fragments.Root
+import gohryt.sapphire.navigation.Navigator
+import gohryt.sapphire.navigation.Route
+import gohryt.sapphire.navigation.Types
 import gohryt.sapphire.resources.*
-import gohryt.sapphire.support.*
-import engine.Engine
+import java.util.*
 
-@Immutable
-@OptIn(
-    ExperimentalLayoutNodeApi::class,
-    ExperimentalLayout::class,
-    InternalTextApi::class,
-    InternalLayoutApi::class,
-    ExperimentalUnsignedTypes::class
-)
 @RequiresApi(Build.VERSION_CODES.R)
 class Activity : AppCompatActivity() {
+    companion object {
+        val core: CoreStruct = Engine.getCore()
+        val storage: StorageStruct = Engine.getStorage()
+        val session: SessionStruct = Engine.getSession()
+        val properties: PropertiesStruct = Engine.getProperties()
+
+        var memoryInfo: ActivityManager.MemoryInfo? = null
+        var metrics: DisplayMetrics? = null
+
+        var navigator: Navigator? = null
+        var strings: Strings? = null
+        var colors: Colors? = null
+        var typefaces: Typefaces? = null
+        var routes: Routes? = null
+        var errors: Errors? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
-        val memoryInfo = ActivityManager.MemoryInfo()
+        memoryInfo = ActivityManager.MemoryInfo()
         activityManager.getMemoryInfo(memoryInfo)
+
         val display = display as Display
-        val metrics = DisplayMetrics()
+        metrics = DisplayMetrics()
         display.getRealMetrics(metrics)
 
-        Engine.initialize(
+        navigator = Navigator(this)
+        strings = Strings(this)
+        colors = Colors(this)
+        typefaces = Typefaces(this)
+        routes = Routes(this)
+        errors = Errors(this)
+
+        core.readApplication(
             packageName,
-            dataDir.absolutePath,
+            dataDir.absolutePath
+        )
+        core.readDevice(
             Build.MODEL,
             Secure.getString(contentResolver, Secure.ANDROID_ID),
-            Build.SUPPORTED_ABIS[0],
-            Runtime.getRuntime().availableProcessors(),
-            memoryInfo.totalMem,
-            Build.VERSION.SDK_INT,
-            metrics.heightPixels,
-            metrics.widthPixels
+            Build.SUPPORTED_ABIS[0]
         )
+        core.readSystem(
+            Runtime.getRuntime().availableProcessors(),
+            memoryInfo!!.totalMem,
+            Build.VERSION.SDK_INT,
+            Build.VERSION.RELEASE,
+            Locale.getDefault().language
+        )
+        core.readScreen(
+            metrics!!.heightPixels,
+            metrics!!.widthPixels
+        )
+        core.readRoutes(
+            routes!!.login,
+            routes!!.news
+        )
+        session.read()
+        properties.read()
 
-        Engine.getSession()
-
-        window.statusBarColor = getColor(R.color.transparent)
-        window.navigationBarColor = getColor(R.color.transparent)
+        window.statusBarColor = colors!!.transparent
+        window.navigationBarColor = colors!!.transparent
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        setContent {
-            val navigation = Navigation.get()
-            val screen = Screen.get()
-
-            val strings = Strings.get()
-            val colors = Colors.get()
-            val typography = Typography.get()
-            val icons = Icons.get()
-            val shapes = Shapes.get()
-
-            NavHost(
-                navController = navigation.controller,
-                startDestination = navigation.auth
-            ) {
-                composable(
-                    route = navigation.auth
-                ) {
-                    Auth.default(
-                        navigation = navigation,
-                        screen = screen,
-                        colors = colors,
-                        typography = typography,
-                        strings = strings,
-                        icons = icons,
-                        shapes = shapes
-                    )
-                }
-                composable(
-                    route = navigation.news
-                ) {
-                    News.default(
-                        navigation = navigation,
-                        screen = screen,
-                        colors = colors,
-                        typography = typography,
-                        strings = strings,
-                        icons = icons,
-                        shapes = shapes
-                    )
-                }
+        navigator!!.add(
+            Route(routes!!.login, Types.SPECIFIC) {
+                Login(this)
+            },
+            Route(routes!!.news, Types.REGULAR) {
+                Root(this)
             }
-        }
+        )
+
+        navigator!!.start(properties.defaultPage)
     }
 
     override fun onPause() {
         super.onPause()
-        System.gc()
         Engine.gc()
+        System.gc()
     }
 }

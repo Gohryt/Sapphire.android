@@ -6,6 +6,7 @@
     <color name="foregroundPoor">#FF808080</color>
     <color name="foregroundAccent">#FFFFFFFF</color>
     <color name="backgroundMain">#FFFFFFFF</color>
+    <color name="backgroundActive">#FFEBEBEB</color>
     <color name="backgroundPoor">#FFF2F2F2</color>
     <color name="backgroundAccent">#FF007FFF</color>
 </resources>
