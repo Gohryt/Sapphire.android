@@ -2,6 +2,8 @@
 
 Update 2020.12.18.1:
 
+Go part is here: github.com/gohryt/sapphire.go
+
 Jetpack compose убран, он хорош, но слишком не продакшн-ready (эта х'''я тупо крашится на сборке подписанного релиза).  
 Бэк возвращён на Go (link will be here: ...)
 
