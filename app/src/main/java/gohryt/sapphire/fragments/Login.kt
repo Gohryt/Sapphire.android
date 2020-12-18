@@ -20,8 +20,7 @@ class Login(context: Context) : LinearLayout(context) {
     init {
         this.orientation = VERTICAL
 
-        val scroll = ScrollView(context)
-        scroll.run {
+        val scroll = ScrollView(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT,
@@ -30,13 +29,11 @@ class Login(context: Context) : LinearLayout(context) {
             isFillViewport = true
         }
 
-        val navigation = View(context)
-        navigation.run {
+        val navigation = View(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, 0, 0f)
         }
 
-        val line = LinearLayout(context)
-        line.run {
+        val line = LinearLayout(context).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -44,13 +41,10 @@ class Login(context: Context) : LinearLayout(context) {
             orientation = VERTICAL
         }
 
-        val status = View(context)
-        status.run {
+        val status = View(context).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, 0, 0f)
         }
-
-        val frame = FrameLayout(context)
-        frame.run {
+        val frame = FrameLayout(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT,
@@ -59,8 +53,7 @@ class Login(context: Context) : LinearLayout(context) {
             setPadding(8)
         }
 
-        val login = LinearLayout(context)
-        login.run {
+        val login = LinearLayout(context).apply {
             layoutParams = FrameLayout.LayoutParams(
                 when {
                     (context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE && Activity.metrics!!.widthPixels >= 720) -> Activity.metrics!!.widthPixels * 0.4
@@ -75,11 +68,10 @@ class Login(context: Context) : LinearLayout(context) {
             (layoutParams as FrameLayout.LayoutParams).setMargins(8)
             setPadding(8)
             orientation = VERTICAL
-            Shape(Activity.colors!!.backgroundMain, 16f)
+            background = Shape(Activity.colors!!.backgroundMain, 16f)
         }
 
-        val loginEnter = TextView(context)
-        loginEnter.run {
+        val loginEnter = TextView(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT,
@@ -93,8 +85,7 @@ class Login(context: Context) : LinearLayout(context) {
             textSize = 16f
         }
 
-        val loginUsername = EditText(context)
-        loginUsername.run {
+        val loginUsername = EditText(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT,
@@ -113,8 +104,7 @@ class Login(context: Context) : LinearLayout(context) {
             background = Shape(Activity.colors!!.backgroundPoor, 16f)
         }
 
-        val loginPassword = EditText(context)
-        loginPassword.run {
+        val loginPassword = EditText(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT,
@@ -133,8 +123,7 @@ class Login(context: Context) : LinearLayout(context) {
             background = Shape(Activity.colors!!.backgroundPoor, 16f)
         }
 
-        val loginConfirm = TextView(context)
-        loginConfirm.run {
+        val loginConfirm = TextView(context).apply {
             layoutParams = LayoutParams(
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT,
