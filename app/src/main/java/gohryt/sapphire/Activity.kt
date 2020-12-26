@@ -1,101 +1,74 @@
 package gohryt.sapphire
 
-import android.app.ActivityManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings.Secure
 import android.util.DisplayMetrics
-import android.view.Display
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import engine.*
-import gohryt.sapphire.fragments.Login
-import gohryt.sapphire.fragments.Root
-import gohryt.sapphire.navigation.Navigator
-import gohryt.sapphire.navigation.Route
-import gohryt.sapphire.navigation.Types
 import gohryt.sapphire.resources.*
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.R)
 class Activity : AppCompatActivity() {
-    companion object {
-        val core: CoreStruct = Engine.getCore()
-        val storage: StorageStruct = Engine.getStorage()
-        val session: SessionStruct = Engine.getSession()
-        val properties: PropertiesStruct = Engine.getProperties()
+    object E {
+        lateinit var core: CoreStruct
+        lateinit var session: SessionStruct
+        lateinit var properties: PropertiesStruct
+        lateinit var storage: StorageStruct
+    }
 
-        var memoryInfo: ActivityManager.MemoryInfo? = null
-        var metrics: DisplayMetrics? = null
-
-        var navigator: Navigator? = null
-        var strings: Strings? = null
-        var colors: Colors? = null
-        var typefaces: Typefaces? = null
-        var routes: Routes? = null
-        var errors: Errors? = null
+    object R {
+        lateinit var strings: Strings
+        lateinit var routes: Routes
+        lateinit var errors: Errors
+        lateinit var colors: Colors
+        lateinit var typefaces: Typefaces
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
-        memoryInfo = ActivityManager.MemoryInfo()
-        activityManager.getMemoryInfo(memoryInfo)
-
-        val display = display as Display
-        metrics = DisplayMetrics()
-        display.getRealMetrics(metrics)
-
-        navigator = Navigator(this)
-        strings = Strings(this)
-        colors = Colors(this)
-        typefaces = Typefaces(this)
-        routes = Routes(this)
-        errors = Errors(this)
-
-        core.readApplication(
-            packageName,
-            dataDir.absolutePath
-        )
-        core.readDevice(
-            Build.MODEL,
-            Secure.getString(contentResolver, Secure.ANDROID_ID),
-            Build.SUPPORTED_ABIS[0]
-        )
-        core.readSystem(
-            Runtime.getRuntime().availableProcessors(),
-            memoryInfo!!.totalMem,
-            Build.VERSION.SDK_INT,
-            Build.VERSION.RELEASE,
-            Locale.getDefault().language
-        )
-        core.readScreen(
-            metrics!!.heightPixels,
-            metrics!!.widthPixels
-        )
-        core.readRoutes(
-            routes!!.login,
-            routes!!.news
-        )
-        session.read()
-        properties.read()
-
-        window.statusBarColor = colors!!.transparent
-        window.navigationBarColor = colors!!.transparent
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-        navigator!!.add(
-            Route(routes!!.login, Types.SPECIFIC) {
-                Login(this)
-            },
-            Route(routes!!.news, Types.REGULAR) {
-                Root(this)
+        val metrics = DisplayMetrics()
+        display?.getRealMetrics(metrics)
+        E.run {
+            core = Engine.getCore().apply {
+                readApplication(
+                    packageName,
+                    dataDir.absolutePath
+                )
+                readDevice(
+                    Build.MODEL,
+                    Secure.getString(contentResolver, Secure.ANDROID_ID),
+                    Build.SUPPORTED_ABIS[0]
+                )
+                readSystem(
+                    Build.VERSION.SDK_INT,
+                    Build.VERSION.RELEASE,
+                    Locale.getDefault().language
+                )
+                readScreen(
+                    metrics.heightPixels,
+                    metrics.widthPixels
+                )
             }
-        )
-
-        navigator!!.start(properties.defaultPage)
+            session = Engine.getSession().apply { read() }
+            properties = Engine.getProperties().apply { read() }
+            storage = Engine.getStorage()
+        }
+        R.run {
+            strings = Strings(this@Activity)
+            routes = Routes(this@Activity)
+            errors = Errors(this@Activity)
+            colors = Colors(this@Activity)
+            typefaces = Typefaces(this@Activity)
+        }
+        window.run {
+            statusBarColor = R.colors.transparent
+            navigationBarColor = R.colors.transparent
+            WindowCompat.setDecorFitsSystemWindows(this, false)
+        }
     }
 
     override fun onPause() {

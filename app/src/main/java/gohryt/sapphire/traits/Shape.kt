@@ -1,4 +1,4 @@
-package gohryt.sapphire.elements
+package gohryt.sapphire.traits
 
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
