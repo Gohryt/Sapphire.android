@@ -7,8 +7,8 @@ import androidx.annotation.RequiresApi
 
 @RequiresApi(Build.VERSION_CODES.R)
 object Size {
-    fun setHeight(view: View, currentHeight: Int, newHeight: Int, newDuration: Long) {
-        ValueAnimator.ofInt(currentHeight, newHeight).run {
+    fun setHeight(view: View, newHeight: Int, newDuration: Long) {
+        ValueAnimator.ofInt(view.measuredHeight, newHeight).run {
             duration = newDuration
             addUpdateListener { a ->
                 val layoutParams = view.layoutParams

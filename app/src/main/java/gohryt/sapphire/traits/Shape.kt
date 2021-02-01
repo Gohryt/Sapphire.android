@@ -8,8 +8,8 @@ import androidx.annotation.RequiresApi
 @RequiresApi(Build.VERSION_CODES.R)
 class Shape(color: Int, tl: Float, tr: Float, br: Float, bl: Float) : ShapeDrawable() {
     init {
-        this.shape = RoundRectShape(floatArrayOf(tl, tl, tr, tr, br, br, bl, bl), null, null)
-        this.paint.color = color
+        shape = RoundRectShape(floatArrayOf(tl, tl, tr, tr, br, br, bl, bl), null, null)
+        paint.color = color
     }
 
     constructor(
