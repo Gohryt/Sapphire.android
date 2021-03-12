@@ -14,7 +14,9 @@
         android:supportsRtl="false">
         <activity
             android:name=".Activity"
-            android:label="@string/application_name">
+            android:label="@string/application_name"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
