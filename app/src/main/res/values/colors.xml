@@ -1,12 +1,12 @@
 <?xml version="1.1" encoding="utf-8"?>
 <resources>
     <color name="legacyNavigationBar">#FF000000</color>
-    <color name="transparent">#00FFFFFF</color>
+
     <color name="foregroundMain">#FF595959</color>
     <color name="foregroundPoor">#FF808080</color>
-    <color name="foregroundAccent">#FFFFFFFF</color>
+    <color name="foregroundAccent">#FF007FFF</color>
+
     <color name="backgroundMain">#FFFFFFFF</color>
     <color name="backgroundActive">#FFEBEBEB</color>
     <color name="backgroundPoor">#FFF2F2F2</color>
-    <color name="backgroundAccent">#FF007FFF</color>
 </resources>

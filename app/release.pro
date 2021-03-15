@@ -1,5 +1,4 @@
 -optimizationpasses 5
 -allowaccessmodification
 -repackageclasses
--dontobfuscate
 -verbose

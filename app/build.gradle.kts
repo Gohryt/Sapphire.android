@@ -6,11 +6,14 @@ android {
     compileSdkVersion(Config.compileSdk)
     buildToolsVersion(Config.buildToolsVersion)
 
+    ndkVersion = Config.ndkVersion
+
     defaultConfig {
         applicationId = "gohryt.sapphire"
 
         minSdkVersion(Config.minSdk)
         targetSdkVersion(Config.targetSdk)
+
         versionCode(Config.versionCode)
         versionName(Config.versionName)
     }
@@ -44,14 +47,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility(Versions.java)
+        targetCompatibility(Versions.java)
     }
     buildFeatures {
         compose = true
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = Versions.java
         useIR = true
     }
     dependenciesInfo {
@@ -59,11 +62,18 @@ android {
         includeInBundle = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.0-alpha12"
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/c/CMakeLists.txt")
+            version = Versions.cMake
+        }
     }
 }
 dependencies {
-    implementation(fileTree(mapOf("include" to "engine.aar", "dir" to "libs")))
-    implementation(Dependencies.appLibraries)
-    implementation("androidx.compose.material:material:1.0.0-beta02")
+    Dependencies.library.forEach { dependency ->
+        implementation(dependency)
+    }
+    implementation("com.google.accompanist:accompanist-insets:0.6.2")
 }

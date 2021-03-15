@@ -4,12 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application android:name=".Application"
         android:label="@string/application_name"
         android:icon="@mipmap/launcher"
         android:roundIcon="@mipmap/launcher_round"
-        android:theme="@style/Theme.Sapphire"
+        android:theme="@style/Theme.Splash"
         android:allowBackup="false"
         android:supportsRtl="false">
         <activity

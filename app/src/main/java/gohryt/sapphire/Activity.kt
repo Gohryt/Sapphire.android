@@ -4,38 +4,28 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
-import engine.*
 import gohryt.sapphire.resources.*
 
 @RequiresApi(Build.VERSION_CODES.R)
 class Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        window.run {
-            statusBarColor = Color.TRANSPARENT
-            navigationBarColor = Color.TRANSPARENT
-            WindowCompat.setDecorFitsSystemWindows(this, false)
-        }
-
         val metrics = DisplayMetrics()
         display?.getRealMetrics(metrics)
 
-        B.run {
+        RES.run {
             strings = Strings(this@Activity)
             routes = Routes(this@Activity)
             errors = Errors(this@Activity)
@@ -44,31 +34,44 @@ class Activity : AppCompatActivity() {
             typefaces = Typefaces(this@Activity)
         }
 
-        setContent {
-            Column (modifier = Modifier.padding(all = 30.dp)) {
-                val x = remember { mutableStateOf(0) }
-                val y = remember { mutableStateOf(B.colors.backgroundAccent) }
-                BasicText(text = "Привет ${x.value}", style = B.typefaces.h3.merge(TextStyle(color = B.colors.foregroundMain)))
+        val view = ComposeView(this)
+        ROOT.set(view = view) {
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
                 Icon(
-                    imageVector = B.icons.like,
-                    contentDescription = "like",
-                    tint = y.value,
-                    modifier = Modifier.clickable {
-                        if (x.value < 10) {
-                            x.value++
-                        }
-                        if (x.value == 10) {
-                            y.value = B.colors.foregroundPoor
-                        }
-                    }
+                    imageVector = RES.icons.like,
+                    contentDescription = "Like",
+                    tint = RES.colors.foregroundAccent
+                )
+                BasicText(
+                    text = "Hello",
+                    style = RES.typefaces.h1.merge(TextStyle(color = RES.colors.foregroundMain))
                 )
             }
         }
+
+        super.setTheme(R.style.Theme_Sapphire)
+        super.onCreate(savedInstanceState)
+        super.setContentView(view)
+    }
+
+    override fun onAttachedToWindow() {
+        window.run {
+            statusBarColor = Color.TRANSPARENT
+            navigationBarColor = Color.TRANSPARENT
+            WindowCompat.setDecorFitsSystemWindows(this, false)
+        }
+
+        super.onAttachedToWindow()
     }
 
     override fun onPause() {
-        super.onPause()
-        Engine.gc()
         System.gc()
+
+        super.onPause()
     }
 }
