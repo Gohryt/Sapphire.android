@@ -1,8 +1,8 @@
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.gradle}")
@@ -12,8 +12,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter()
     }
 }
 tasks.register("clean", Delete::class) {

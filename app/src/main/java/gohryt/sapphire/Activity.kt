@@ -4,19 +4,21 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.text.TextStyle
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import gohryt.sapphire.resources.*
 
 @RequiresApi(Build.VERSION_CODES.R)
@@ -36,6 +38,14 @@ class Activity : AppCompatActivity() {
 
         val view = ComposeView(this)
         ROOT.set(view = view) {
+            val y = remember {
+                mutableStateOf(0)
+            }
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, i ->
+                val insets = i.getInsets(WindowInsetsCompat.Type.systemBars())
+                y.value = insets.bottom
+                return@setOnApplyWindowInsetsListener i
+            }
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -47,9 +57,11 @@ class Activity : AppCompatActivity() {
                     contentDescription = "Like",
                     tint = RES.colors.foregroundAccent
                 )
-                BasicText(
+                Text(
                     text = "Hello",
-                    style = RES.typefaces.h1.merge(TextStyle(color = RES.colors.foregroundMain))
+                    color = RES.colors.foregroundMain,
+                    style = RES.typefaces.h1,
+                    modifier = Modifier.clickable { Log.d("Log", "y = ${y.value}") }
                 )
             }
         }

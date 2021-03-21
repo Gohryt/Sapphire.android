@@ -16,6 +16,11 @@ android {
 
         versionCode(Config.versionCode)
         versionName(Config.versionName)
+        externalNativeBuild {
+            ndkBuild {
+                cppFlags += ""
+            }
+        }
     }
     buildTypes {
         release {
@@ -63,12 +68,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.compose
-    }
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/c/CMakeLists.txt")
-            version = Versions.cMake
-        }
     }
 }
 dependencies {
