@@ -16,11 +16,6 @@ android {
 
         versionCode(Config.versionCode)
         versionName(Config.versionName)
-        externalNativeBuild {
-            ndkBuild {
-                cppFlags += ""
-            }
-        }
     }
     buildTypes {
         release {
