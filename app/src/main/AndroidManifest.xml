@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <application android:name=".Application"
+    <application android:name=".SapphireApplication"
         android:label="@string/application_name"
         android:icon="@mipmap/launcher"
         android:roundIcon="@mipmap/launcher_round"
@@ -14,7 +14,7 @@
         android:allowBackup="false"
         android:supportsRtl="false">
         <activity
-            android:name=".Activity"
+            android:name=".SapphireActivity"
             android:label="@string/application_name"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true">
