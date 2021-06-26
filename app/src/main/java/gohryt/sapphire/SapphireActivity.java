@@ -16,7 +16,7 @@ public class SapphireActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         TextView view = new TextView(this);
-        view.setText("Hello kitty!");
+        view.setText(R.string.application_name);
 
         super.setTheme(R.style.Theme_Sapphire);
         super.onCreate(savedInstanceState);
