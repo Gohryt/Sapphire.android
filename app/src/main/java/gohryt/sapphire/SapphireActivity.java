@@ -17,6 +17,7 @@ public class SapphireActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         TextView view = new TextView(this);
         view.setText(R.string.application_name);
+        view.setTextColor(getColor(R.color.foregroundMain));
 
         super.setTheme(R.style.Theme_Sapphire);
         super.onCreate(savedInstanceState);
