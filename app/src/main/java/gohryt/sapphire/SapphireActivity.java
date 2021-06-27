@@ -3,7 +3,9 @@ package gohryt.sapphire;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -15,6 +17,7 @@ import gohryt.sapphire.resources.Colors;
 import gohryt.sapphire.resources.Errors;
 import gohryt.sapphire.resources.Icons;
 import gohryt.sapphire.resources.Strings;
+import gohryt.sapphire.resources.Typefaces;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class SapphireActivity extends AppCompatActivity {
@@ -24,14 +27,27 @@ public class SapphireActivity extends AppCompatActivity {
         Errors errors = new Errors(this);
         Icons icons = new Icons(this);
         Strings strings = new Strings(this);
+        Typefaces typefaces = new Typefaces(this);
 
         TextView view = new TextView(this);
         view.setText(strings.applicationName);
-        view.setTextColor(colors.foregroundAccent);
+        view.setTextColor(colors.foregroundMain);
+        view.setTypeface(typefaces.bold);
+        view.setGravity(Gravity.CENTER);
+        view.setTextSize(24f);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+        );
+
+        FrameLayout layout = new FrameLayout(this);
+        layout.setLayoutParams(params);
+        layout.addView(view);
 
         super.setTheme(R.style.Theme_Sapphire);
         super.onCreate(savedInstanceState);
-        super.setContentView(view);
+        super.setContentView(layout);
     }
 
     @Override
