@@ -7,4 +7,7 @@ import androidx.annotation.RequiresApi;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class SapphireApplication extends Application {
+    static {
+        System.loadLibrary("rust");
+    }
 }

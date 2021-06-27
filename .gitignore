@@ -1,4 +1,6 @@
 .gradle
 .idea
 build
+target
+Cargo.lock
 local.properties

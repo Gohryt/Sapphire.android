@@ -21,6 +21,8 @@ import gohryt.sapphire.resources.Typefaces;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class SapphireActivity extends AppCompatActivity {
+    private static native void startRequestFromJni(SapphireActivity callback);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Colors colors = new Colors(this);
@@ -48,6 +50,8 @@ public class SapphireActivity extends AppCompatActivity {
         super.setTheme(R.style.Theme_Sapphire);
         super.onCreate(savedInstanceState);
         super.setContentView(layout);
+
+        startRequestFromJni(this);
     }
 
     @Override
