@@ -10,19 +10,21 @@ import gohryt.sapphire.R;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class Colors {
-    int ForegroundMain;
-    int ForegroundPoor;
-    int ForegroundAccent;
-    int BackgroundMain;
-    int BackgroundActive;
-    int BackgroundPoor;
+    public int foregroundMain;
+    public int foregroundPoor;
+    public int foregroundAccent;
 
-    Colors(Context context) {
-        ForegroundMain = ContextCompat.getColor(context, R.color.foregroundMain);
-        ForegroundPoor = ContextCompat.getColor(context, R.color.foregroundPoor);
-        ForegroundAccent = ContextCompat.getColor(context, R.color.foregroundAccent);
-        BackgroundMain = ContextCompat.getColor(context, R.color.backgroundMain);
-        BackgroundActive = ContextCompat.getColor(context, R.color.backgroundActive);
-        BackgroundPoor = ContextCompat.getColor(context, R.color.backgroundPoor);
+    public int backgroundMain;
+    public int backgroundActive;
+    public int backgroundPoor;
+
+    public Colors(Context context) {
+        foregroundMain = ContextCompat.getColor(context, R.color.foregroundMain);
+        foregroundPoor = ContextCompat.getColor(context, R.color.foregroundPoor);
+        foregroundAccent = ContextCompat.getColor(context, R.color.foregroundAccent);
+
+        backgroundMain = ContextCompat.getColor(context, R.color.backgroundMain);
+        backgroundActive = ContextCompat.getColor(context, R.color.backgroundActive);
+        backgroundPoor = ContextCompat.getColor(context, R.color.backgroundPoor);
     }
 }

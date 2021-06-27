@@ -1,7 +1,9 @@
 <?xml version="1.1" encoding="utf-8"?>
 <resources>
-    <string name="application_name">Sapphire</string>
     <string name="splash_logo">Логотип</string>
+
+    <string name="application_name">Sapphire</string>
+
     <string name="login_enter">Войти через ВК</string>
     <string name="login_username">Телефон или имейл</string>
     <string name="login_password">Пароль</string>

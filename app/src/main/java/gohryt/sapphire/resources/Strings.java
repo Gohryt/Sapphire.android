@@ -9,19 +9,19 @@ import gohryt.sapphire.R;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class Strings {
-    String ApplicationName;
+    public String applicationName;
 
-    String LoginEnter;
-    String LoginUsername;
-    String LoginPassword;
-    String LoginConfirm;
+    public String loginEnter;
+    public String loginUsername;
+    public String loginPassword;
+    public String loginConfirm;
 
-    Strings(Context context) {
-        ApplicationName = context.getString(R.string.application_name);
+    public Strings(Context context) {
+        applicationName = context.getString(R.string.application_name);
 
-        LoginEnter = context.getString(R.string.login_enter);
-        LoginUsername = context.getString(R.string.login_username);
-        LoginPassword = context.getString(R.string.login_password);
-        LoginConfirm = context.getString(R.string.login_password);
+        loginEnter = context.getString(R.string.login_enter);
+        loginUsername = context.getString(R.string.login_username);
+        loginPassword = context.getString(R.string.login_password);
+        loginConfirm = context.getString(R.string.login_password);
     }
 }

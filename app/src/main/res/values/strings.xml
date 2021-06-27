@@ -1,7 +1,9 @@
 <?xml version="1.1" encoding="utf-8"?>
 <resources>
-    <string name="application_name">Sapphire</string>
     <string name="splash_logo">Logo</string>
+
+    <string name="application_name">Sapphire</string>
+
     <string name="login_enter">Enter with VK</string>
     <string name="login_username">Email or phone number</string>
     <string name="login_password">Password</string>

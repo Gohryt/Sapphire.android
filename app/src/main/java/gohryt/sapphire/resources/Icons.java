@@ -12,9 +12,9 @@ import gohryt.sapphire.R;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class Icons {
-    Drawable Like;
+    public Drawable like;
 
-    Icons(Context context) {
-        Like = ContextCompat.getDrawable(context, R.drawable.icon_like);
+    public Icons(Context context) {
+        like = ContextCompat.getDrawable(context, R.drawable.icon_like);
     }
 }

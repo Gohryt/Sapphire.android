@@ -9,9 +9,9 @@ import gohryt.sapphire.R;
 
 @RequiresApi(Build.VERSION_CODES.R)
 public class Errors {
-    String AddressNotFound;
+    public String addressNotFound;
 
-    Errors(Context context) {
-        AddressNotFound = context.getString(R.string.error_addressNotFound);
+    public Errors(Context context) {
+        addressNotFound = context.getString(R.string.error_addressNotFound);
     }
 }
