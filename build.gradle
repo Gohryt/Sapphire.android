@@ -8,15 +8,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.1.0-alpha02'
-        classpath 'org.mozilla.rust-android-gradle:plugin:0.8.6'
     }
-}
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
 
-tasks.whenTaskAdded { task ->
-    if ((task.name == 'javaPreCompileDebug' || task.name == 'javaPreCompileRelease')) {
-        task.dependsOn 'cargoBuild'
-    }
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
